@@ -79,7 +79,7 @@ frame_genero.pack(pady=5)
 
 tk.Radiobutton(frame_genero, text="Masculino", variable=genero_var, value="Masculino").pack(side="left")
 tk.Radiobutton(frame_genero, text="Femenino", variable=genero_var, value="Femenino").pack(side="left")
-tk.Radiobutton(frame_genero, text="Otro", variable=genero_var, value="Otro").pack(side="left")
+tk.Radiobutton(frame_genero, text="Otro (Canguro)", variable=genero_var, value="Otro").pack(side="left")
 
 
 btn_agregar = tk.Button(root, text="Añadir Usuario", command=agregar_usuario)
