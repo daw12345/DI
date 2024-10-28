@@ -13,7 +13,8 @@ class ControladorNotas:
 
 
         # Asigna los métodos a los botones de la vista
-        self.vista.button1.config(command=self.agregar_nota)  # Guardar nota
+        self.vista.button0.config(command=self.agregar_nota)  # Agregar nota
+        self.vista.button1.config(command=self.guardar_notas)  # Guardar nota
         self.vista.button3.config(command=self.eliminar_nota)  # Eliminar nota
         self.vista.button2.config(command=self.cargar_notas)   # Cargar notas
         self.vista.button4.config(command=lambda: self.descargar_imagen())  # Descargar imagen
@@ -34,7 +35,6 @@ class ControladorNotas:
         # Guarda la nota, independientemente de si está vacía o no
         self.modelo.agregar_nota(nueva_nota)
         self.vista.entry_nota.delete(0, tk.END)  # Limpia el campo de entrada
-        self.modelo.guardar_notas()  # Guarda las notas en el archivo
         self.actualizar_listbox()  # Actualiza la lista en la vista
 
 

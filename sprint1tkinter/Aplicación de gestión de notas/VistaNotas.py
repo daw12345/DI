@@ -16,6 +16,9 @@ class VistaNotas:
         self.entry_nota = tk.Entry(w, width=40)
         self.entry_nota.pack()
 
+        self.button0 = tk.Button(w, text="Agregar nota")
+        self.button0.pack()
+
         self.button1 = tk.Button(w, text="Guardar nota")
         self.button1.pack()
 
