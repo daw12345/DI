@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Fighther</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="firebase_database_url" translatable="false">https://proyecyo-manhattan-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">965881757660</string>
+    <string name="google_api_key" translatable="false">AIzaSyA2JR27lTxS2Y32VdiYbYbomx7a0JC4y48</string>
+    <string name="google_app_id" translatable="false">1:965881757660:android:e5a496bf87667873a9d919</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA2JR27lTxS2Y32VdiYbYbomx7a0JC4y48</string>
+    <string name="google_storage_bucket" translatable="false">proyecyo-manhattan.firebasestorage.app</string>
+    <string name="imagen_item">Imagen del item</string>
+    <string name="ingrese_contrasena">Ingrese Contraseña</string>
+    <string name="ingrese_usuario">Ingrese Usuario</string>
+    <string name="project_id" translatable="false">proyecyo-manhattan</string>
+    <string name="registro_usuario">Registrar Usuario</string>
+    <style name="Base.Theme.Fighther" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Fighther" parent="Base.Theme.Fighther"/>
+</resources>
