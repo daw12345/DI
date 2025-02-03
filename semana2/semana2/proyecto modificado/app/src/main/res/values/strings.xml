@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fighther</string>
+    <string name="imagen_item">Imagen del item</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="registro_usuario">Registrar Usuario</string>
+    <string name="ingrese_usuario">Ingrese Usuario</string>
+    <string name="ingrese_contrasena">Ingrese Contraseña</string>
+</resources>
