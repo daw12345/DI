@@ -2,10 +2,12 @@ package com.example.fighther.views;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Aplicar el tema guardado al inicio
+        applySavedTheme();
+
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
@@ -75,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
         String correo = binding.etCorreoL.getText().toString().trim();
         String contrasena = binding.etContrasenaL.getText().toString().trim();
         loginViewModel.login(correo, contrasena);
+    }
+
+    private void applySavedTheme() {
+        SharedPreferences sharedPref = getSharedPreferences("AppConfig", MODE_PRIVATE);
+        boolean darkMode = sharedPref.getBoolean("darkMode", false);
+
+        AppCompatDelegate.setDefaultNightMode(darkMode ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.example.fighther.views;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,15 +23,16 @@ import com.example.fighther.viewmodels.DashboardViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DashboardActivity extends AppCompatActivity implements ItemAdapter.OnItemClickListener {
     private ActivityDashboardBinding binding;
     private DashboardViewModel dashboardViewModel;
     private ItemAdapter itemAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Aplicar el tema según la preferencia guardada
+        applySavedTheme();
+
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
         binding.setLifecycleOwner(this);
@@ -79,12 +83,34 @@ public class DashboardActivity extends AppCompatActivity implements ItemAdapter.
         binding.btnFavoritos.setOnClickListener(v ->
                 startActivity(new Intent(DashboardActivity.this, FavoritesActivity.class))
         );
-        binding.btnTheme.setOnClickListener(v -> {
-            ThemeHelper.toggleTheme(this);
-            boolean isDarkMode = ThemeHelper.isDarkMode(this);
-            String mensaje = "Cambiando a tema " + (isDarkMode ? "oscuro" : "claro");
 
-        });
+        binding.btnTheme.setOnClickListener(v -> toggleTheme());
+    }
+
+    private void toggleTheme() {
+        SharedPreferences sharedPref = getSharedPreferences("AppConfig", Context.MODE_PRIVATE);
+        boolean isDarkMode = sharedPref.getBoolean("darkMode", false);
+
+        // Alternar tema
+        boolean newMode = !isDarkMode;
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("darkMode", newMode);
+        editor.apply();
+
+        // Aplicar tema
+        AppCompatDelegate.setDefaultNightMode(newMode ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Recrear actividad para aplicar cambios
+        recreate();
+    }
+
+    private void applySavedTheme() {
+        SharedPreferences sharedPref = getSharedPreferences("AppConfig", Context.MODE_PRIVATE);
+        boolean darkMode = sharedPref.getBoolean("darkMode", false);
+
+        AppCompatDelegate.setDefaultNightMode(darkMode ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     @Override
@@ -96,6 +122,4 @@ public class DashboardActivity extends AppCompatActivity implements ItemAdapter.
         intent.putExtra("url", item.getUrl());
         startActivity(intent);
     }
-
-
 }
