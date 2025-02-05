@@ -5,6 +5,8 @@ public class Item {
     private String titulo;
     private String descripcion;
     private String url;
+    private boolean favorite;
+
 
     // Constructor vacío (requerido para Firebase)
     public Item() {
@@ -15,6 +17,8 @@ public class Item {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.url = url;
+        this.favorite = false; // Por defecto no es favorita
+
     }
 
     public String getId() {
@@ -47,5 +51,9 @@ public class Item {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public void setFavorite(boolean favorite) {  // Setter para favorite
+        this.favorite = favorite;
     }
 }

@@ -15,7 +15,8 @@
         android:layout_height="match_parent"
         tools:context=".views.DashboardActivity">
 
-       
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewItems"
             android:layout_width="match_parent"
@@ -25,7 +26,22 @@
             app:layout_constraintBottom_toTopOf="@id/btnCerrarSesion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            tools:ignore="NotSibling" />
+
+
+        <ImageButton
+            android:id="@+id/btnTheme"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/toggle_theme"
+            android:padding="12dp"
+            android:src="@drawable/ic_theme_mode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorOnPrimary" />
 
         <Button
             android:id="@+id/btnCerrarSesion"
@@ -42,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Favoritos"
-            android:layout_marginStart="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

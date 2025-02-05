@@ -14,15 +14,18 @@ import com.example.fighther.R;
 import com.example.fighther.adapters.ItemAdapter;
 import com.example.fighther.databinding.ActivityDashboardBinding;
 import com.example.fighther.models.Item;
+import com.example.fighther.utils.ThemeHelper;
 import com.example.fighther.viewmodels.DashboardViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DashboardActivity extends AppCompatActivity implements ItemAdapter.OnItemClickListener {
     private ActivityDashboardBinding binding;
     private DashboardViewModel dashboardViewModel;
     private ItemAdapter itemAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,12 @@ public class DashboardActivity extends AppCompatActivity implements ItemAdapter.
         binding.btnFavoritos.setOnClickListener(v ->
                 startActivity(new Intent(DashboardActivity.this, FavoritesActivity.class))
         );
+        binding.btnTheme.setOnClickListener(v -> {
+            ThemeHelper.toggleTheme(this);
+            boolean isDarkMode = ThemeHelper.isDarkMode(this);
+            String mensaje = "Cambiando a tema " + (isDarkMode ? "oscuro" : "claro");
+
+        });
     }
 
     @Override
@@ -87,4 +96,6 @@ public class DashboardActivity extends AppCompatActivity implements ItemAdapter.
         intent.putExtra("url", item.getUrl());
         startActivity(intent);
     }
+
+
 }
